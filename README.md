@@ -1,12 +1,14 @@
-# browser-launcher [![Build Status](https://travis-ci.org/httptoolkit/browser-launcher.svg?branch=master)](https://travis-ci.org/httptoolkit/browser-launcher) [![Get it on npm](https://img.shields.io/npm/v/@httptoolkit/browser-launcher.svg)](https://www.npmjs.com/package/@httptoolkit/browser-launcher)
+# browser-launcher
+
+[![Build Status](https://travis-ci.org/httptoolkit/browser-launcher.svg?branch=master)](https://travis-ci.org/httptoolkit/browser-launcher)
+[![Get it on npm](https://img.shields.io/npm/v/@httptoolkit/browser-launcher.svg)](https://www.npmjs.com/package/@httptoolkit/browser-launcher)
 
 > _Part of [HTTP Toolkit](https://httptoolkit.tech): powerful tools for building, testing & debugging HTTP(S)_
 
 Detect the browser versions available on your system and launch them in an
 isolated profile for automation & testing purposes.
 
-You can launch browsers headlessly
-(using [Xvfb](http://en.wikipedia.org/wiki/Xvfb) or with [PhantomJS](http://phantomjs.org/)) and set the proxy
+You can launch browsers headlessly (using [Xvfb](http://en.wikipedia.org/wiki/Xvfb) or with [PhantomJS](http://phantomjs.org/)) and set the proxy
 configuration on the fly.
 
 This project is the latest in a long series, each forked from the last:
@@ -100,6 +102,7 @@ launcher(function(err, launch) {
 
 
 ### Browser detection
+
 ```js
 var launcher = require('../');
 
@@ -111,7 +114,7 @@ launcher.detect(function(available) {
 
 Outputs:
 
-```bash
+```
 $ node example/detect.js
 Available browsers:
 [ { name: 'chrome',

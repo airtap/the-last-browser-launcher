@@ -1,10 +1,7 @@
-/**
- * Created by mitch on 2/29/16.
- */
-import test from 'ava';
-import Browsers from '../lib/browsers';
+const test = require('tape');
+const Browsers = require('../lib/browsers');
 
-test('browser platforms without any variants', t => {
+test('browser platforms without any variants', function (t) {
     var browsers = new Browsers({
         firefox: {}
     });
@@ -15,9 +12,10 @@ test('browser platforms without any variants', t => {
         linux: ['firefox'],
         regex: undefined
     }]);
+    t.end()
 });
 
-test('browser platforms with multiple variants', t => {
+test('browser platforms with multiple variants', function (t) {
     var browsers = new Browsers({
         firefox: {
             variants: {
@@ -38,9 +36,10 @@ test('browser platforms with multiple variants', t => {
         linux: ['firefox-developer'],
         regex: undefined
     }]);
+    t.end()
 });
 
-test('browser platforms when command is different from variant name', t => {
+test('browser platforms when command is different from variant name', function (t) {
     var browsers = new Browsers({
         chrome: {
             variants: {
@@ -55,9 +54,10 @@ test('browser platforms when command is different from variant name', t => {
         linux: ['google-chrome'],
         regex: undefined
     }]);
+    t.end()
 });
 
-test('browser platforms when multiple commands are possible for a variant', t => {
+test('browser platforms when multiple commands are possible for a variant', function (t) {
     var browsers = new Browsers({
         chrome: {
             variants: {
@@ -72,9 +72,10 @@ test('browser platforms when multiple commands are possible for a variant', t =>
         linux: ['google-chrome', 'google-chrome-stable'],
         regex: undefined
     }]);
+    t.end()
 });
 
-test('browser config by type', t => {
+test('browser config by type', function (t) {
     var browsers = new Browsers({
         chrome: {
             profile: true
@@ -87,20 +88,22 @@ test('browser config by type', t => {
     t.deepEqual(browsers.typeConfig('firefox'), {
         profile: false
     });
+    t.end()
 });
 
-test('browser config supports all options', t => {
+test('browser config supports all options', function (t) {
     var browsers = new Browsers({
         chrome: {
             startupTime: 1000,
-            nsaUplink: true,
-            'john-cena': 'champ'
+            beep: true,
+            boop: '123'
         }
     });
 
     t.deepEqual(browsers.typeConfig('chrome'), {
         startupTime: 1000,
-        nsaUplink: true,
-        'john-cena': 'champ'
+        beep: true,
+        boop: '123'
     });
+    t.end()
 });

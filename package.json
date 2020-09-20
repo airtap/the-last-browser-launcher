@@ -3,16 +3,16 @@
   "version": "1.7.3",
   "description": "Detect, launch and stop browser versions",
   "main": "index.js",
-  "types": "./types.d.ts",
+  "license": "MIT",
   "scripts": {
-    "build": "tsc --noEmit ./types.d.ts",
-    "pretest": "npm run build",
-    "test": "ava"
+    "test": "tape test/*.js"
   },
-  "directories": {
-    "example": "example",
-    "res": "res"
-  },
+  "files": [
+    "example",
+    "lib",
+    "res",
+    "index.js"
+  ],
   "dependencies": {
     "@httptoolkit/osx-find-executable": "^1.1.0",
     "win-detect-browsers": "^6.0.0",
@@ -25,6 +25,9 @@
     "rimraf": "^2.6.1",
     "simple-plist": "^1.0.0",
     "uid": "0.0.2"
+  },
+  "devDependencies": {
+    "tape": "^5.0.1"
   },
   "repository": {
     "type": "git",
@@ -50,19 +53,7 @@
     "benderjs",
     "mitchhentges"
   ],
-  "license": "MIT",
   "engine": {
     "node": ">=0.8"
-  },
-  "devDependencies": {
-    "@types/node": "^12.0.2",
-    "ava": "^0.25.0",
-    "typescript": "^3.4.5"
-  },
-  "ava": {
-    "failFast": true,
-    "files": [
-      "test/**/*.js"
-    ]
   }
 }
