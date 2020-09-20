@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "tape test/*.js"
+    "test": "standard && tape test/*.js"
   },
   "files": [
     "example",
@@ -27,6 +27,7 @@
     "uid": "0.0.2"
   },
   "devDependencies": {
+    "standard": "^14.3.4",
     "tape": "^5.0.1"
   },
   "repository": {

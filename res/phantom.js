@@ -1,40 +1,40 @@
 /* global phantom */
-var webpage = require( 'webpage' ),
-	system = require('system'),
-	currentUrl = system.args[ system.args.length - 1 ],
-	page;
+var webpage = require('webpage')
+var system = require('system')
+var currentUrl = system.args[system.args.length - 1]
+var page
 
-function renderPage( url ) {
-	page = webpage.create();
-	page.windowName = 'my-window';
-	page.settings.webSecurityEnabled = false;
+function renderPage (url) {
+  page = webpage.create()
+  page.windowName = 'my-window'
+  page.settings.webSecurityEnabled = false
 
-	// handle redirects
-	page.onNavigationRequested = function( url, type, willNavigate, main ) {
-		if ( main && url != currentUrl ) {
-			currentUrl = url;
-			page.close();
-			renderPage( url );
-		}
-	};
+  // handle redirects
+  page.onNavigationRequested = function (url, type, willNavigate, main) {
+    if (main && url !== currentUrl) {
+      currentUrl = url
+      page.close()
+      renderPage(url)
+    }
+  }
 
-	// handle logs
-	page.onConsoleMessage = function( msg ) {
-		console.log( 'console: ' + msg );
-	};
+  // handle logs
+  page.onConsoleMessage = function (msg) {
+    console.log('console: ' + msg)
+  }
 
-	page.onError = function( msg, trace ) {
-		console.log( 'error:', msg );
-		trace.forEach( function( item ) {
-			console.log( '  ', item.file, ':', item.line );
-		} );
-	};
+  page.onError = function (msg, trace) {
+    console.log('error:', msg)
+    trace.forEach(function (item) {
+      console.log('  ', item.file, ':', item.line)
+    })
+  }
 
-	page.open( url, function( status ) {
-		if ( status !== 'success' ) {
-			phantom.exit( 1 );
-		}
-	} );
+  page.open(url, function (status) {
+    if (status !== 'success') {
+      phantom.exit(1)
+    }
+  })
 }
 
-renderPage( currentUrl );
+renderPage(currentUrl)

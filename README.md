@@ -47,25 +47,25 @@ npm install @httptoolkit/browser-launcher
 ### Browser launch
 
 ```js
-const launcher = require('@httptoolkit/browser-launcher');
+const launcher = require('@httptoolkit/browser-launcher')
 
 launcher(function(err, launch) {
-	if (err) {
-		return console.error(err);
-	}
+  if (err) {
+    return console.error(err)
+  }
 
-	launch('http://cksource.com/', 'chrome', function(err, instance) {
-		if (err) {
-			return console.error(err);
-		}
+  launch('http://cksource.com/', 'chrome', function(err, instance) {
+    if (err) {
+      return console.error(err)
+    }
 
-		console.log('Instance started with PID:', instance.pid);
+    console.log('Instance started with PID:', instance.pid)
 
-		instance.on('stop', function(code) {
-			console.log('Instance stopped with exit code:', code);
-		});
-	});
-});
+    instance.on('stop', function(code) {
+      console.log('Instance stopped with exit code:', code)
+    })
+  })
+})
 ```
 
 Outputs:
@@ -79,37 +79,37 @@ Instance stopped with exit code: 0
 ### Browser launch with options
 
 ```js
-var launcher = require('@httptoolkit/browser-launcher');
+const launcher = require('@httptoolkit/browser-launcher')
 
 launcher(function(err, launch) {
-	// ...
-	launch(
-		'http://cksource.com/',
-		{
-			browser: 'chrome',
-			noProxy: [ '127.0.0.1', 'localhost' ],
-			options: [
-				'--disable-web-security',
-				'--disable-extensions'
-			]
-		},
-		function(err, instance) {
-			// ...
-		}
-	);
-});
+  // ...
+  launch(
+    'http://cksource.com/',
+    {
+      browser: 'chrome',
+      noProxy: [ '127.0.0.1', 'localhost' ],
+      options: [
+        '--disable-web-security',
+        '--disable-extensions'
+      ]
+    },
+    function(err, instance) {
+      // ...
+    }
+  )
+})
 ```
 
 
 ### Browser detection
 
 ```js
-var launcher = require('../');
+const launcher = require('../')
 
 launcher.detect(function(available) {
-	console.log('Available browsers:');
-	console.dir(available);
-});
+  console.log('Available browsers:')
+  console.dir(available)
+})
 ```
 
 Outputs:
@@ -118,25 +118,25 @@ Outputs:
 $ node example/detect.js
 Available browsers:
 [ { name: 'chrome',
-		version: '36.0.1985.125',
-		type: 'chrome',
-		command: 'google-chrome' },
-	{ name: 'chromium',
-		version: '36.0.1985.125',
-		type: 'chrome',
-		command: 'chromium-browser' },
-	{ name: 'firefox',
-		version: '31.0',
-		type: 'firefox',
-		command: 'firefox' },
-	{ name: 'phantomjs',
-		version: '1.9.7',
-		type: 'phantom',
-		command: 'phantomjs' },
-	{ name: 'opera',
-		version: '12.16',
-		type: 'opera',
-		command: 'opera' } ]
+  version: '36.0.1985.125',
+  type: 'chrome',
+  command: 'google-chrome' },
+  { name: 'chromium',
+  version: '36.0.1985.125',
+  type: 'chrome',
+  command: 'chromium-browser' },
+  { name: 'firefox',
+  version: '31.0',
+  type: 'firefox',
+  command: 'firefox' },
+  { name: 'phantomjs',
+  version: '1.9.7',
+  type: 'phantom',
+  command: 'phantomjs' },
+  { name: 'opera',
+  version: '12.16',
+  type: 'opera',
+  command: 'opera' } ]
 ```
 
 ### Detaching the launched browser process from your script
@@ -146,28 +146,29 @@ If you want the opened browser to remain open after killing your script, first, 
 Then, if you want your script to immediately return control to the shell, you may additionally call `unref` on the `instance` object in the callback:
 
 ```js
-var launcher = require('@httptoolkit/browser-launcher');
-launcher(function (err, launch) {
-	launch('http://example.org/', {
-		browser: 'chrome',
-		detached: true
-    }, function(err, instance) {
-		if (err) {
-			return console.error(err);
-		}
+const launcher = require('@httptoolkit/browser-launcher')
 
-		instance.process.unref();
-		instance.process.stdin.unref();
-		instance.process.stdout.unref();
-		instance.process.stderr.unref();
-	});
-});
+launcher(function (err, launch) {
+  launch('http://example.org/', {
+    browser: 'chrome',
+    detached: true
+  }, function(err, instance) {
+    if (err) {
+      return console.error(err)
+    }
+
+    instance.process.unref()
+    instance.process.stdin.unref()
+    instance.process.stdout.unref()
+    instance.process.stderr.unref()
+  })
+})
 ```
 
 ## API
 
 ``` js
-var launcher = require('@httptoolkit/browser-launcher');
+const launcher = require('@httptoolkit/browser-launcher')
 ```
 
 ### `launcher([configPath], callback)`
