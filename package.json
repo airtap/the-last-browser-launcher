@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@httptoolkit/osx-find-executable": "^1.1.0",
-    "@httptoolkit/win-detect-browsers": "^6.0.1-node14",
+    "win-detect-browsers": "^6.0.0",
     "headless": "^1.0.0",
     "lodash.assign": "^4.0.9",
     "lodash.omit": "^4.3.0",
