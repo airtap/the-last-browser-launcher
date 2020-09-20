@@ -21,7 +21,7 @@
     "lodash.pick": "^4.2.1",
     "osenv": "^0.1.0",
     "simple-plist": "^1.0.0",
-    "uid": "0.0.2",
+    "tempy": "^0.7.0",
     "win-detect-browsers": "^6.0.0"
   },
   "devDependencies": {
