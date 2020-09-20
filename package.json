@@ -1,6 +1,6 @@
 {
   "name": "the-last-browser-launcher",
-  "version": "1.7.3",
+  "version": "0.0.0",
   "description": "Detect, launch and stop browsers",
   "main": "index.js",
   "license": "MIT",
