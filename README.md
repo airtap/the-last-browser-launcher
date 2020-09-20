@@ -8,8 +8,7 @@
 Detect the browser versions available on your system and launch them in an
 isolated profile for automation & testing purposes.
 
-You can launch browsers headlessly (using [Xvfb](http://en.wikipedia.org/wiki/Xvfb) or with [PhantomJS](http://phantomjs.org/)) and set the proxy
-configuration on the fly.
+You can launch browsers headlessly (using [Xvfb](http://en.wikipedia.org/wiki/Xvfb), not supported on Windows) and set the proxy configuration on the fly.
 
 This project is the latest in a long series, each forked from the last:
 
@@ -34,7 +33,6 @@ At the moment, `browser-launcher` supports following browsers on Windows, Unix a
 - Brave (Experimental)
 - Opera
 - Safari
-- PhantomJS
 
 ## Install
 
@@ -129,10 +127,6 @@ Available browsers:
   version: '31.0',
   type: 'firefox',
   command: 'firefox' },
-  { name: 'phantomjs',
-  version: '1.9.7',
-  type: 'phantom',
-  command: 'phantomjs' },
   { name: 'opera',
   version: '12.16',
   type: 'opera',
