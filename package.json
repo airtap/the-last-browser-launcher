@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "standard && tape test/*.js"
+    "test": "standard && depcheck && tape test/*.js"
   },
   "files": [
     "example",
@@ -18,13 +18,12 @@
     "headless": "^1.0.0",
     "lodash.assign": "^4.0.9",
     "lodash.omit": "^4.3.0",
-    "lodash.pick": "^4.2.1",
-    "osenv": "^0.1.0",
     "simple-plist": "^1.0.0",
     "tempy": "^0.7.0",
     "win-detect-browsers": "^6.0.0"
   },
   "devDependencies": {
+    "depcheck": "^1.2.0",
     "standard": "^14.3.4",
     "tape": "^5.0.1"
   },

@@ -40,7 +40,7 @@ npm install the-last-browser-launcher
 ```js
 const launcher = require('the-last-browser-launcher')
 
-launcher(function(err, launch) {
+launcher(function(err, browsers, launch) {
   if (err) {
     return console.error(err)
   }
@@ -70,60 +70,20 @@ Instance stopped with exit code: 0
 ### Browser launch with options
 
 ```js
-const launcher = require('the-last-browser-launcher')
-
-launcher(function(err, launch) {
-  // ...
-  launch(
-    'http://example.com/',
-    {
-      browser: 'chrome',
-      noProxy: [ '127.0.0.1', 'localhost' ],
-      options: [
-        '--disable-web-security',
-        '--disable-extensions'
-      ]
-    },
-    function(err, instance) {
-      // ...
-    }
-  )
-})
-```
-
-
-### Browser detection
-
-```js
-const launcher = require('../')
-
-launcher.detect(function(available) {
-  console.log('Available browsers:')
-  console.dir(available)
-})
-```
-
-Outputs:
-
-```
-$ node example/detect.js
-Available browsers:
-[ { name: 'chrome',
-  version: '36.0.1985.125',
-  type: 'chrome',
-  command: 'google-chrome' },
-  { name: 'chromium',
-  version: '36.0.1985.125',
-  type: 'chrome',
-  command: 'chromium-browser' },
-  { name: 'firefox',
-  version: '31.0',
-  type: 'firefox',
-  command: 'firefox' },
-  { name: 'opera',
-  version: '12.16',
-  type: 'opera',
-  command: 'opera' } ]
+launch(
+  'http://example.com/',
+  {
+    browser: 'chrome',
+    noProxy: [ '127.0.0.1', 'localhost' ],
+    options: [
+      '--disable-web-security',
+      '--disable-extensions'
+    ]
+  },
+  function(err, instance) {
+    // ...
+  }
+)
 ```
 
 ### Detaching the launched browser process from your script
@@ -133,22 +93,18 @@ If you want the opened browser to remain open after killing your script, first, 
 Then, if you want your script to immediately return control to the shell, you may additionally call `unref` on the `instance` object in the callback:
 
 ```js
-const launcher = require('the-last-browser-launcher')
+launch('http://example.org/', {
+  browser: 'chrome',
+  detached: true
+}, function(err, instance) {
+  if (err) {
+    return console.error(err)
+  }
 
-launcher(function (err, launch) {
-  launch('http://example.org/', {
-    browser: 'chrome',
-    detached: true
-  }, function(err, instance) {
-    if (err) {
-      return console.error(err)
-    }
-
-    instance.process.unref()
-    instance.process.stdin.unref()
-    instance.process.stdout.unref()
-    instance.process.stderr.unref()
-  })
+  instance.process.unref()
+  instance.process.stdin.unref()
+  instance.process.stdout.unref()
+  instance.process.stderr.unref()
 })
 ```
 
@@ -186,10 +142,6 @@ Open given URI in a browser and return an instance of it.
 - *String* `options.profile` - path to a directory to use for the browser profile, overriding the default
 - *Function* `callback(err, instance)` - function fired when started a browser `instance` or an error occurred
 
-### `launch.browsers`
-
-This property contains an array of all known and available browsers.
-
 ### `instance`
 
 Browser instance object.
@@ -209,27 +161,6 @@ Browser instance object.
 
 **Methods:**
 - `stop(callback)` - stop the instance and fire the callback once stopped
-
-### `launcher.detect(callback)`
-
-Detects all browsers available.
-
-**Parameters:**
-- *Function* `callback(available)` - function called with array of all recognized browsers
-
-Each browser contains following properties:
-- `name` - name of a browser
-- `version` - browser's version
-- `type` - type of a browser i.e. browser's family
-- `command` - command used to launch a browser
-
-### `launcher.update([configFile], callback)`
-
-Updates the browsers cache file (`~/.config/the-last-browser-launcher/config.json` is no `configFile` was given) and creates new profiles for found browsers.
-
-**Parameters:**
-- *String* `configFile` - path to the configuration file *Optional*
-- *Function* `callback(err, browsers)` - function called with found browsers and errors (if any)
 
 ## Known Issues
 
