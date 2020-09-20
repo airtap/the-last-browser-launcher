@@ -1,6 +1,6 @@
 const launcher = require('..')
 
-launcher.detect(function logBrowsers (available) {
+launcher.detect(function (available) {
   console.log('Available browsers:')
   console.dir(available)
 })

@@ -5,7 +5,7 @@ launcher(function startBrowser (initErr, launch) {
     return console.error(initErr)
   }
 
-  launch('http://cksource.com/', process.env.BROWSER || 'chrome', function afterLaunch (launchErr, instance) {
+  launch('http://example.com/', process.env.BROWSER || 'chrome', function afterLaunch (launchErr, instance) {
     if (launchErr) {
       return console.error(launchErr)
     }

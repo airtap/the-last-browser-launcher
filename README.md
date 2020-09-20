@@ -1,29 +1,22 @@
-# browser-launcher
+# the-last-browser-launcher
 
-[![Build Status](https://travis-ci.org/httptoolkit/browser-launcher.svg?branch=master)](https://travis-ci.org/httptoolkit/browser-launcher)
-[![Get it on npm](https://img.shields.io/npm/v/@httptoolkit/browser-launcher.svg)](https://www.npmjs.com/package/@httptoolkit/browser-launcher)
+**Detect the browsers installed on your system and launch them in an isolated profile for automation & testing purposes. Supports Linux, Mac and Windows.**
 
-> _Part of [HTTP Toolkit](https://httptoolkit.tech): powerful tools for building, testing & debugging HTTP(S)_
-
-Detect the browser versions available on your system and launch them in an
-isolated profile for automation & testing purposes.
-
-You can launch browsers headlessly (using [Xvfb](http://en.wikipedia.org/wiki/Xvfb), not supported on Windows) and set the proxy configuration on the fly.
+[![npm status](http://img.shields.io/npm/v/the-last-browser-launcher.svg)](https://www.npmjs.org/package/the-last-browser-launcher)
+[![node](https://img.shields.io/node/v/the-last-browser-launcher.svg)](https://www.npmjs.org/package/the-last-browser-launcher)
+[![Travis build status](https://img.shields.io/travis/com/airtap/the-last-browser-launcher.svg?label=travis)](http://travis-ci.com/airtap/the-last-browser-launcher)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 This project is the latest in a long series, each forked from the last:
 
-* [substack/browser-launcher](https://github.com/substack/browser-launcher)
-* [browser-launcher2](https://github.com/benderjs/browser-launcher2).
-* [james-proxy/james-browser-launcher](https://github.com/james-proxy/james-browser-launcher)
+- [`substack/browser-launcher`](https://github.com/substack/browser-launcher) (lightly maintained)
+- [`benderjs/browser-launcher2`](https://github.com/benderjs/browser-launcher2) (unmaintained).
+- [`james-proxy/james-browser-launcher`](https://github.com/james-proxy/james-browser-launcher) (unmaintained)
+- [`httptoolkit/browser-launcher`](https://github.com/httptoolkit/browser-launcher) (actively maintained)
 
-Each previous versions seems to now be unmaintained, and this is a core component of [HTTP Toolkit](https://httptoolkit.tech),
-so it's been forked here to ensure it can continue healthy into the future.
+They all have their problems. This fork is temporary, meant to consolidate fixes and reduce API surface, after which it will be split up into small, community-owned modules. In other words, this fork exists so that the project can die a good death. Its API is subject to change without warning.
 
 ## Supported browsers
-
-The goal for this module is to support all major browsers on every desktop platform.
-
-At the moment, `browser-launcher` supports following browsers on Windows, Unix and OS X:
 
 - Chrome
 - Chromium
@@ -37,7 +30,7 @@ At the moment, `browser-launcher` supports following browsers on Windows, Unix a
 ## Install
 
 ```
-npm install @httptoolkit/browser-launcher
+npm install the-last-browser-launcher
 ```
 
 ## Example
@@ -45,14 +38,14 @@ npm install @httptoolkit/browser-launcher
 ### Browser launch
 
 ```js
-const launcher = require('@httptoolkit/browser-launcher')
+const launcher = require('the-last-browser-launcher')
 
 launcher(function(err, launch) {
   if (err) {
     return console.error(err)
   }
 
-  launch('http://cksource.com/', 'chrome', function(err, instance) {
+  launch('http://example.com/', 'chrome', function(err, instance) {
     if (err) {
       return console.error(err)
     }
@@ -77,12 +70,12 @@ Instance stopped with exit code: 0
 ### Browser launch with options
 
 ```js
-const launcher = require('@httptoolkit/browser-launcher')
+const launcher = require('the-last-browser-launcher')
 
 launcher(function(err, launch) {
   // ...
   launch(
-    'http://cksource.com/',
+    'http://example.com/',
     {
       browser: 'chrome',
       noProxy: [ '127.0.0.1', 'localhost' ],
@@ -140,7 +133,7 @@ If you want the opened browser to remain open after killing your script, first, 
 Then, if you want your script to immediately return control to the shell, you may additionally call `unref` on the `instance` object in the callback:
 
 ```js
-const launcher = require('@httptoolkit/browser-launcher')
+const launcher = require('the-last-browser-launcher')
 
 launcher(function (err, launch) {
   launch('http://example.org/', {
@@ -162,7 +155,7 @@ launcher(function (err, launch) {
 ## API
 
 ``` js
-const launcher = require('@httptoolkit/browser-launcher')
+const launcher = require('the-last-browser-launcher')
 ```
 
 ### `launcher([configPath], callback)`
@@ -232,7 +225,7 @@ Each browser contains following properties:
 
 ### `launcher.update([configFile], callback)`
 
-Updates the browsers cache file (`~/.config/browser-launcher/config.json` is no `configFile` was given) and creates new profiles for found browsers.
+Updates the browsers cache file (`~/.config/the-last-browser-launcher/config.json` is no `configFile` was given) and creates new profiles for found browsers.
 
 **Parameters:**
 - *String* `configFile` - path to the configuration file *Optional*

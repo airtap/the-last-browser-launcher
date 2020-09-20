@@ -1,7 +1,7 @@
 {
-  "name": "@httptoolkit/browser-launcher",
+  "name": "the-last-browser-launcher",
   "version": "1.7.3",
-  "description": "Detect, launch and stop browser versions",
+  "description": "Detect, launch and stop browsers",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -31,9 +31,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/httptoolkit/browser-launcher.git"
+    "url": "git://github.com/airtap/the-last-browser-launcher.git"
   },
-  "homepage": "https://github.com/httptoolkit/browser-launcher",
+  "homepage": "https://github.com/airtap/the-last-browser-launcher",
   "keywords": [
     "browser",
     "headless",
