@@ -13,6 +13,7 @@
   ],
   "dependencies": {
     "@httptoolkit/osx-find-executable": "^1.1.0",
+    "debug": "^4.2.0",
     "headless": "^1.0.0",
     "simple-plist": "^1.1.1",
     "tempy": "^0.7.1",
