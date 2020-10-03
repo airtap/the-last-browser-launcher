@@ -8,18 +8,15 @@
     "test": "standard && depcheck && tape test/*.js"
   },
   "files": [
-    "example",
     "lib",
-    "res",
     "index.js"
   ],
   "dependencies": {
     "@httptoolkit/osx-find-executable": "^1.1.0",
     "headless": "^1.0.0",
-    "lodash.assign": "^4.0.9",
-    "lodash.omit": "^4.3.0",
-    "simple-plist": "^1.0.0",
-    "tempy": "^0.7.0",
+    "simple-plist": "^1.1.1",
+    "tempy": "^0.7.1",
+    "which": "^2.0.2",
     "win-detect-browsers": "^6.0.0"
   },
   "devDependencies": {
