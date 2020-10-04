@@ -23,7 +23,7 @@ They all have their problems. This fork is temporary, meant to consolidate fixes
 - Firefox
 - IE (Windows only)
 - Chromium-based Edge (Windows & Mac only)
-- Brave (Experimental)
+- Brave
 - Opera
 - Safari
 
@@ -91,7 +91,7 @@ Open given URI in a browser and yield an `instance` of it.
   - *Boolean* `skipDefaults` - don't supply any default args to browser
   - *Boolean* `detached` - if true, then killing your script will not kill the opened browser
   - *Array|String* `noProxy` - An array of strings, containing proxy routes to skip over
-  - *Boolean* `headless` - run in headless mode. Supported cross-platform by Chromium, Chrome, Edge and Firefox.
+  - *Boolean* `headless` - run in headless mode. Supported cross-platform by Chromium, Chrome, Edge, Brave and Firefox.
 - *Function* `callback(err, instance)`
 
 ### `instance`
