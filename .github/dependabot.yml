@@ -7,3 +7,7 @@ updates:
     ignore:
       - dependency-name: '@httptoolkit/osx-find-executable'
       - dependency-name: standard
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
